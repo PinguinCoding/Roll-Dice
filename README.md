@@ -8,7 +8,7 @@ This project was developed to study the use of **Regex** in identifying patterns
 Files: 2
 Classes: 1
 External Libraries: re, os, random and functools
-Functions: 5\n
+Functions: 5
 Lines: 89
 
 ## Operation

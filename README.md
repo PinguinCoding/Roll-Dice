@@ -1,20 +1,37 @@
 # Roll-Dice
-This is a simple project of an algorithm that rolls D&amp;D dice with modifiers at a command prompt.
+This is a simple project of an algorithm that rolls D&D dice with modifiers at a command prompt.
 
-## Funcionamento
-O código foi construído no PyCharm e funciona com seu terminal, contudo, ele é melhor executado em um prompt de comando separado. Existem quatro comandos que o usuário pode usar, são: 'roll', 'set', 'clear' e 'quit'.
+### Purpose
+This project was developed to study the use of **Regex** in identifying patterns in user input collection routines, this being the main function that allows receiving a command input in a single line and returning appropriate behavior from the code.
 
-### Rolando Dados
+### Info
+Files: 2
+Classes: 1
+External Libraries: re, os, random and functools
+Functions: 5
+Lines: 91
 
-#### Rotina de Coleta
-O primeiro e principal comando 'roll' aceita uma série de parâmetros, por padrão limitados a apenas 2 digítios, para permitir rolagens de dados no seguinte formato: roll 1d20+5-2, onda a expressão máxima seria roll 99
-Para validar o formato usado o algoritmo usa um padrão **Regex** para varrer a string que o usuário oferece como input. O primeiro parâmetro é a quantidade de dados a serem rolados, seguido do tipo de dado limitado por uma variável interna que só permite os tipos de dados: d100, d50, d20, d12, d10, d8, d6, d4, d3 e d2. O terceiro parâmetro são os modificadores, eles são coletados na ordem: modificador_positivo, modificador_negativo; caso o algoritmo não o encontre-os nessa ordem, ele irá coletar apenas o que respeita a ordem, por exemplo:
+## Operation
+The code was built in PyCharm and works with it's terminal, however, it is best to run in a separate command prompt. There are four commands that the user can use: 'roll', 'set', 'clear' and 'quit'.
+
+### Rolling Dice
+
+#### Collection Routine
+The first and main 'roll' command accepts a series of parameters, by default limited to just 2 digits, to allow dice rolls in the following format: 99d100+99-99
+To validate the format used, the algorithm uses a **Regex pattern** to scan the string that the user offers as input. The first parameter is the amount of dice to be rolled, followed by the dice type limited by an internal variable that only allows the dice types: d100, d50, d20, d12, d10, d8, d6, d4, d3 and d2. The third parameter is the modifiers, they are collected in the order: positive_modifier, negative_modifier; If the algorithm does not find them in that order, it will only collect what respects the order, for example:
 roll 1d20-4+2
-Para o pârametro de modificadores, ele vai coletar apenas o '-4'
+For the modifiers parameter, it will only collect the ['-4'] value and not the full ['-4', +2']
 
-#### Rolando Dados
-Para rolar dados o algoritmo usa de um simples **randint** da biblioteca random do python para gerar números pseudo-aleatórios e armazena-los numa lista, após isso os valores são somados com a função de alta ordem **reduce** da biblioteca functools. Os modificadores são armazenados em lista, se o usuário passou um valor para eles a lista será somada também com a função **reduce** e terá um valor final a ser somado nas rolagens.
+#### Rolling Dice
+To roll dices the algorithm uses a simple **randint** from Python's random library to generate pseudo-random numbers and stores them in a list, after which the values are added with the high-order function **reduce** from functools library. Modifiers are stored in an secondary list, if the user passed a value to them, the list will also be added with the **reduce** function and will have a final value to be added to the rolled dices.
 
-### Definindo Classe de Dificuldade de Teste
-#### Rotina de Coleta
-Classe de dificuldade de teste (CD) é um conceito em muitos jogos de RPG de mesa, não exclusivo do D&D, onde um valor é definido e somente se considerado um _sucesso_ no teste caso o valor tirado nos dados seja maior que o CD do teste. O comando 'set' também usa um padrão Regex para coletar o input do usuário, sendo esse limitado a dois digitos. 
+### Defining Test Difficulty Class
+
+#### Collection Routine
+Check for Difficulty Class (DC) is a concept in many tabletop role-playing games, not exclusive to D&D, where a value is defined and a _success_ is possible only when the value rolled on the dice is greater than the DC of the test. The 'set' command also uses a **Regex pattern** to collect the user input, which is limited to two digits equal to the parameters of the 'roll' command.
+
+#### Passing Tests
+Initially the DC is set to None, but if the user modifies this parameter, the algorithm will always compare a new roll to the defined DC value, returning to the user whether he passed the test or not.
+
+### Other Commands
+The 'clear' command is useful for clearing the prompt screen whenever the user wants, preserving only the print with the command instructions, while the 'quit' command is used to exit the loop and stop code execution

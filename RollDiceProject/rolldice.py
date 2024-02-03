@@ -6,7 +6,7 @@ from functools import reduce
 
 class DiceController(object):
     def __init__(self):
-        self.check_roll_input = r'(^roll\s{1})(\d{1,3})(d\d{1,3})(\+\d{1,2})?(\-\d{1,2})?'
+        self.check_roll_input = r'(^roll\s{1})(\d{1,2})(d\d{1,3})(\+\d{1,2})?(\-\d{1,2})?'
         self.check_set_input = r'(^set\s{1})(\d{1,2})'
         self.dice_types = {'d100': 100, 'd50': 50, 'd20': 20, 'd12': 12, 'd10': 10, 'd8': 8, 'd6': 6,
                            'd4': 4, 'd3': 3, 'd2': 2}

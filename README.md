@@ -8,8 +8,8 @@ This project was developed to study the use of **Regex** in identifying patterns
 Files: 2
 Classes: 1
 External Libraries: re, os, random and functools
-Functions: 5
-Lines: 91
+Functions: 5\n
+Lines: 89
 
 ## Operation
 The code was built in PyCharm and works with it's terminal, however, it is best to run in a separate command prompt. There are four commands that the user can use: 'roll', 'set', 'clear' and 'quit'.

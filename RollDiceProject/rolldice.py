@@ -10,7 +10,7 @@ class DiceController(object):
         self.check_set_input = r'(^set\s{1})(\d{1,2})'
         self.dice_types = {'d100': 100, 'd50': 50, 'd20': 20, 'd12': 12, 'd10': 10, 'd8': 8, 'd6': 6,
                            'd4': 4, 'd3': 3, 'd2': 2}
-        self.test_cd = None
+        self.test_dc = None
 
     def roll_dice(self, dice_amount: str, dice_type: str, dice_modifiers: list):
         roll_max_value = self.dice_types[dice_type]
@@ -26,15 +26,15 @@ class DiceController(object):
         modifiers_sum = reduce(lambda x, y: x + y, modifiers)
         result = rolled + modifiers_sum
         print("Roll:", rolled, "\nModifiers:", modifiers_sum, "\nSum:", result)
-        if self.test_cd is None:
+        if self.test_dc is None:
             return None
-        if result < self.test_cd:
-            return print(f"You failed the test! The CD was {self.test_cd}")
-        return print(f"You passed the test! The CD was {self.test_cd}")
+        if result < self.test_dc:
+            return print(f"You failed the test! The DC was {self.test_dc}")
+        return print(f"You passed the test! The DC was {self.test_dc}")
 
-    def set_test_class_difficulty(self, cd):
-        self.test_cd = int(cd)
-        print(f"The test class difficulty was set to {self.test_cd}")
+    def set_test_difficulty_class(self, dc):
+        self.test_dc = int(dc)
+        print(f"The test class difficulty was set to {self.test_dc}")
 
     def validate_user_input(self, user_input: str):
         if user_input == 'clear':
@@ -42,7 +42,7 @@ class DiceController(object):
             return True
         match = re.search(self.check_set_input, user_input)
         if match:
-            self.set_test_class_difficulty(match.group(2))
+            self.set_test_difficulty_class(match.group(2))
             return True
         match = re.search(self.check_roll_input, user_input)
         if match:
